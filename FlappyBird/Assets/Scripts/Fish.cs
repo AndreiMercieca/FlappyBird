@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Fish : MonoBehaviour
 {
@@ -31,7 +32,18 @@ public class Fish : MonoBehaviour
             //add upwards force to rigidbody
             //Vector 3 (0,1,0) * force(1000f)
             rigidbody.AddForce(Vector3.up * _force);
+        }
+        //if the position of the fish on the y axis is bigger than 6 reset the scene
+        
+        if(transform.position.y > 6f)
+        {
+            SceneManager.LoadScene(0);
+        }
+        //if the position of the fish on the y axis is smaller than 6 reset the scene
 
+        if(transform.position.y < -6f)
+        {
+            SceneManager.LoadScene(0);
         }
     }
 }
